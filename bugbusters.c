@@ -70,9 +70,9 @@ int main(){
 
         int col;
         if(current ==1){
-            printf("Player A, choose a column (1-7): ");
+            printf("Player A, choose a column (1-7): \n");
         } else {
-            printf("Player B, choose a column (1-7): ");
+            printf("Player B, choose a column (1-7): \n");
         }
 
         scanf("%d",&col);
