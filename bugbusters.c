@@ -1,10 +1,31 @@
-
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <time.h>
+int getColumnInput() {
+    int col;
 
-/* ========================= BOARD FUNCTIONS ========================= */
+    while (1) {
+        printf("Choose a column (1-7): ");
+
+        if (scanf("%d", &col) != 1) {
+            // Invalid input (letter, symbol, etc.)
+            printf("Invalid input! Please enter a number from 1 to 7.\n");
+
+            // Clear input buffer
+            while (getchar() != '\n');
+
+            continue;
+        }
+
+        // Valid number, check range
+        if (col >= 1 && col <= 7)
+            return col - 1;
+
+        printf("Number must be between 1 and 7.\n");
+    }
+}
+
 
 void createboard(int arr[6][7]) {
     for (int i = 0; i < 6; i++) {
@@ -57,7 +78,6 @@ bool checkwin(int arr[6][7], int row, int col) {
     return false;
 }
 
-/* ========================= EASY BOT ========================= */
 
 int botmove_easy(int arr[6][7]) {
     int col;
@@ -67,7 +87,6 @@ int botmove_easy(int arr[6][7]) {
     return col;
 }
 
-/* ========================= MEDIUM BOT ========================= */
 
 int botmove_medium(int arr[6][7], int botPlayer, int humanPlayer) {
 
@@ -141,7 +160,6 @@ int botmove_medium(int arr[6][7], int botPlayer, int humanPlayer) {
     return col;
 }
 
-/* ========================= HARD BOT SUPPORT ========================= */
 
 int evaluate_position(int arr[6][7], int player) {
     int score = 0;
@@ -268,7 +286,6 @@ int minimax(int arr[6][7], int depth, int alpha, int beta,
     }
 }
 
-/* ========================= HARD BOT ========================= */
 
 int botmove_hard(int arr[6][7]) {
     int botPlayer = 2;
@@ -301,7 +318,6 @@ int botmove_hard(int arr[6][7]) {
     return bestCol;
 }
 
-/* ========================= MAIN GAME ========================= */
 
 int main() {
     int arr[6][7] = {0};
@@ -346,8 +362,8 @@ int main() {
         if (current == humanPlayer || mode == 1) {
             printf("Player %c, choose a column (1-7): ",
                    current == 1 ? 'A' : 'B');
-            scanf("%d", &col);
-            col -= 1;
+            col = getColumnInput();
+
         }
         else {
             if (difficulty == 1) col = botmove_easy(arr);
