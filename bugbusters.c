@@ -1,18 +1,18 @@
-#include <stdio.h>
+add the updated part to this code #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include <pthread.h>
+
 #define TABLE_SIZE 100003
-#define MAX_DEPTH 5
-
-
+#define MAX_DEPTH 14 
 typedef struct {
     char key[43];
     int value;
     int depth;
 } TTEntry;
+
 static TTEntry transpositionTable[TABLE_SIZE];
 static pthread_rwlock_t tt_lock = PTHREAD_RWLOCK_INITIALIZER;
 
