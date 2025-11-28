@@ -4,7 +4,6 @@
 #include <string.h>
 #include <time.h>
 #include <pthread.h>
-
 #define TABLE_SIZE 100003
 #define MAX_DEPTH 5
 
