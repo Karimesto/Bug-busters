@@ -12,7 +12,6 @@ typedef struct {
     int value;
     int depth;
 } TTEntry;
-
 static TTEntry transpositionTable[TABLE_SIZE];
 static pthread_rwlock_t tt_lock = PTHREAD_RWLOCK_INITIALIZER;
 
