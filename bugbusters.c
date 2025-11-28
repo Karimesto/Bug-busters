@@ -6,7 +6,7 @@
 #include <pthread.h>
 
 #define TABLE_SIZE 100003
-#define MAX_DEPTH 14 
+#define MAX_DEPTH 10
 
 typedef struct {
     char key[43];
